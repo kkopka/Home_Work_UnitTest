@@ -62,27 +62,18 @@ public class UnitTest {
     }
 
     @DataProvider
-    public Object[][]  subtractionNegative(){
+    public Object[][]  negative(){
         return new Object[][]{
                 {-6,-3,-3},
                 {-8,-4,-4}
         };
     }
 
-    @Test(dataProvider = "subtractionNegative")
-    public void subtractNeg(int expected,int first,int second){
+    @Test(dataProvider = "negative")
+    public void negative (int expected,int first,int second){
        Assert.assertNotEquals(expected,calculator.subtraction(first,second));
+       Assert.assertNotEquals(expected,calculator.division(first,second));
+       Assert.assertNotEquals(expected,calculator.multiplication(first, second));
     }
-    @DataProvider
-    public Object[][]  divisionNegative(){
-        return new Object[][]{
-                {5,5,0},
-                {100,100,0}
-        };
-    }
-    @Test(dataProvider = "divisionNegative")
-    public void divisionNegative(int expected,int first,int second){
-        System.out.println(calculator.divisionNull(first,second));
-        Assert.assertNotEquals(expected,calculator.divisionNull(first,second));
-    }
+
 }
