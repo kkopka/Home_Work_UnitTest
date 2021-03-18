@@ -32,14 +32,18 @@ public class Calculator {
     }
 
     public static void computation(String first, String second, String operationName) {
+
         Double firstFromCalculator=null;
         Double secondFromCalculator=null;
         try {
             firstFromCalculator=Double.parseDouble(first);
             secondFromCalculator=Double.parseDouble(second);
+
         }catch (NumberFormatException e){
             System.out.println("Вы ввели неверные данные");
+            result=null;
             System.out.println(getResult());
+            return;
         }
 
         switch (operationName) {
@@ -57,6 +61,7 @@ public class Calculator {
                 break;
             default:
                 System.out.println("Нет подходящего символа");
+                result=null;
         }
 
     }
