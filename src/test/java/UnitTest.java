@@ -15,8 +15,9 @@ public class UnitTest {
     }
 
     @Test(dataProvider = "positive")
-    public void additionPos(int expected,int first,int second){
-
+    public void additionPos(String expected,double first,double second){
+     //    Calculator.computation(first,second,expected);
+        // Assert.assertNotEquals(null,);
     }
 
 }
