@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class UnitTest {
 
-    private Calculator calculator=new Calculator();
+
 
     @DataProvider
     public Object[][] additionPositive(){
@@ -17,7 +17,7 @@ public class UnitTest {
 
     @Test(dataProvider = "additionPositive")
     public void additionPos(int expected,int first,int second){
-        Assert.assertEquals(expected,calculator.addition(first,second));
+        Assert.assertEquals(expected,Calculator.addition(first,second));
     }
 
     @DataProvider
@@ -32,7 +32,7 @@ public class UnitTest {
 
     @Test(dataProvider = "subtractionPositive")
     public void subtractionPos(int expected,int first,int second){
-        Assert.assertEquals(expected,calculator.subtraction(first,second));
+        Assert.assertEquals(expected,Calculator.subtraction(first,second));
     }
 
     @DataProvider
@@ -45,7 +45,7 @@ public class UnitTest {
 
     @Test(dataProvider = "multiplicationPositive")
     public void  multiplicationPos(int expected,int first,int second){
-        Assert.assertEquals(expected,calculator.multiplication(first,second));
+        Assert.assertEquals(expected,Calculator.multiplication(first,second));
     }
 
     @DataProvider
@@ -58,7 +58,7 @@ public class UnitTest {
 
     @Test(dataProvider = "divisionPositive")
     public void  divisionPos(int expected,int first,int second){
-        Assert.assertEquals(expected,calculator.division(first,second));
+        Assert.assertEquals(expected,Calculator.division(first,second));
     }
 
     @DataProvider
@@ -71,9 +71,9 @@ public class UnitTest {
 
     @Test(dataProvider = "negative")
     public void negative (int expected,int first,int second){
-       Assert.assertNotEquals(expected,calculator.subtraction(first,second));
-       Assert.assertNotEquals(expected,calculator.division(first,second));
-       Assert.assertNotEquals(expected,calculator.multiplication(first, second));
+       Assert.assertNotEquals(expected,Calculator.subtraction(first,second));
+       Assert.assertNotEquals(expected,Calculator.division(first,second));
+       Assert.assertNotEquals(expected,Calculator.multiplication(first, second));
     }
 
 }
