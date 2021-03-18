@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Calculator {
-    private static Double result;
+    private static String result;
 
     public static void main(String[] args) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -40,49 +40,46 @@ public class Calculator {
             secondFromCalculator=Double.parseDouble(second);
 
         }catch (NumberFormatException e){
-            System.out.println("Вы ввели неверные данные");
-            result=null;
-            System.out.println(getResult());
+            result="Вы ввели неверные данные";
             return;
         }
 
         switch (operationName) {
             case "+":
-                result = addition(firstFromCalculator,secondFromCalculator);
+                result =  addition(firstFromCalculator,secondFromCalculator).toString();
                 break;
             case "-":
-                result = subtraction(firstFromCalculator,secondFromCalculator);
+                result = subtraction(firstFromCalculator,secondFromCalculator).toString();
                 break;
             case "*":
-                result = multiplication(firstFromCalculator,secondFromCalculator);
+                result = multiplication(firstFromCalculator,secondFromCalculator).toString();
                 break;
             case "/":
-                result = division(firstFromCalculator,secondFromCalculator);
+                result = division(firstFromCalculator,secondFromCalculator).toString();
                 break;
             default:
-                System.out.println("Нет подходящего символа");
-                result=null;
+                result="Нет подходящего символа";
         }
 
     }
 
-    public static Double getResult() {
+    public static String getResult() {
         return result;
     }
 
-    private static double addition(double first, double second) {
+    private static Double addition(double first, double second) {
         return first + second;
     }
 
-    private static double subtraction(double minuend, double subtrahend) {
+    private static Double subtraction(double minuend, double subtrahend) {
         return minuend - subtrahend;
     }
 
-    private static double multiplication(double first, double second) {
+    private static Double multiplication(double first, double second) {
         return first * second;
     }
 
-    private static double division(double numerator, double denominator) {
+    private static Double division(double numerator, double denominator) {
         return numerator / denominator;
     }
 
