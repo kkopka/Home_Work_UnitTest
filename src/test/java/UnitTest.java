@@ -3,7 +3,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class UnitTest {
-   int i=1;
+
     @DataProvider
     public Object[][] positive() {
 
@@ -23,7 +23,6 @@ public class UnitTest {
         Calculator.computation(first, second, operation);
         System.out.println("Результат positive теста: "+ Calculator.getResult());
         Assert.assertEquals(expected, Calculator.getResult());
-        i++;
     }
 
     @DataProvider
@@ -41,7 +40,6 @@ public class UnitTest {
         Calculator.computation(first, second, operation);
         System.out.println("Результат negative теста: "+ Calculator.getResult());
         Assert.assertEquals(expected, Calculator.getResult());
-        i++;
     }
 
 }
