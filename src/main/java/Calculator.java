@@ -9,23 +9,25 @@ public class Calculator {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Команды калькулятора: сложение +, вычитание -, деление /, умножение *, выход exit");
         while (true) {
-            System.out.print("Какую операцию вы хотите выполнить:");
-            String operation = null;
-            try {
-                operation = reader.readLine();
-                if (operation.equals("exit")){
-                    break;
+           String operationName = null;
+            while (true) {
+                System.out.print("Выберите операцию:");
+                try {
+                    operationName = (reader.readLine());
+                    if (operation(operationName)) {
+                        break;
+                    } else {
+                        continue;
+                    }
+                } catch (IOException e) {
+                    System.out.println("Ошибка");
+                    continue;
                 }
-                if (!operation.equals("+") && !operation.equals("-") && !operation.equals("/") && !operation.equals("*")) {
-                    throw new IOException();
-                }
-            } catch (IOException e) {
-                System.out.println("Команда неккоректна");
-                continue;
             }
 
             Double first = null;
             Double second = null;
+
 
             while (true) {
                 try {
@@ -40,8 +42,26 @@ public class Calculator {
                 break;
             }
 
-            Double result = null;
-            switch (operation) {
+              Double result = computation(first, second, operationName);
+
+
+            System.out.println(first + " " + operationName + " " + second + " = " + result);
+
+        }
+    }
+
+    public static boolean operation(String operationName) {
+        if (!operationName.equals("+") && !operationName.equals("-") && !operationName.equals("/") && !operationName.equals("*")) {
+            System.out.println(operationName + " данная операция не распознана");
+            return false;
+        }
+        return true;
+    }
+
+
+    public static double computation(double first, double second, String operationName) {
+        Double result = null;
+            switch (operationName) {
                 case "+":
                     result = addition(first, second);
                     break;
@@ -54,26 +74,26 @@ public class Calculator {
                 case "/":
                     result = division(first, second);
                     break;
-            }
-            System.out.println(first + " " + operation + " " + second + " = " + result);
 
-        }
+            }
+
+        return result;
     }
 
 
-    public static double addition(double first, double second) {
+    private static double addition(double first, double second) {
         return first + second;
     }
 
-    public static double subtraction(double minuend, double subtrahend) {
+    private static double subtraction(double minuend, double subtrahend) {
         return minuend - subtrahend;
     }
 
-    public static double multiplication(double first, double second) {
+    private static double multiplication(double first, double second) {
         return first * second;
     }
 
-    public static double division(double numerator, double denominator) {
+    private static double division(double numerator, double denominator) {
         return numerator / denominator;
     }
 
